@@ -3,7 +3,7 @@
 Nama : Mohamad Rafli Hidayat  
 NPM : 2306245831  
 Kelas : A  
-Link Web : 
+Link Web : https://pbp.cs.ui.ac.id/mohamad.rafli/flihhmarket 
 
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**   
 1) Membuat Repository Lokal, Repository GitHub, dan Proyek Django Baru.  
