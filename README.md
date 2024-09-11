@@ -24,7 +24,7 @@ Link Web :
 
 2. **Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.**
 
-![][image1]
+![bagan](https://github.com/user-attachments/assets/ebedf5f5-df79-4fdf-8621-edbad2f9f5da)
 
 1) User melakukan HTTP request yang akan ditangani oleh Django. Di urls.py, pola URL yang diminta akan menentukan fungsi view mana yang harus dijalankan berdasarkan permintaan tersebut.  
 2) Setelah view yang sesuai dipanggil, view akan mengambil data yang diperlukan dari database. Data ini diambil dari field yang didefinisikan dalam models.py.  
@@ -41,5 +41,3 @@ Menurut saya, Django adalah framework yang populer karena menggunakan model MVT 
 5. **Mengapa model pada Django disebut sebagai ORM?**
 
 Model pada Django disebut sebagai ORM (Object-Relational Mapping) karena berfungsi sebagai penghubung antara kode Python dan database relasional. Dengan ORM, pengembang dapat mengelola data dalam database menggunakan objek Python tanpa perlu menulis kueri SQL secara langsung. Ini membuat proses pengelolaan data lebih intuitif dan efisien, karena pengembang dapat bekerja dengan data dalam bentuk objek yang lebih mudah dipahami dan dimanipulasi.
-
-[image1]: (https://github.com/flihid/flihh.market/blob/main/bagan/bagan.png)
