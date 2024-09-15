@@ -77,13 +77,13 @@ Penyerang dapat memanfaatkan celah ini dengan mengirimkan tautan atau skrip berb
 **Hasil akses URL pada Postman**
 
 1. Format XML
-
+![xml](https://github.com/user-attachments/assets/1e912408-03e3-4426-b91e-36c5ef2ed198)
 
 2. Format JSON
-
+![json](https://github.com/user-attachments/assets/c5e90035-287b-48eb-b028-d8de665f725f)
 
 3. Format  XML *by ID*
-
+![xmlbyid](https://github.com/user-attachments/assets/104249e0-3afc-4f8e-8e47-c980c15d920d)
 
 4. Format  JSON *by ID*
-
+![jsonbyid](https://github.com/user-attachments/assets/49d3f9fd-a451-407b-87f7-4dcd006ace00)
