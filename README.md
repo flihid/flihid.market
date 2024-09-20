@@ -5,6 +5,9 @@ NPM : 2306245831
 Kelas : A  
 Link Web : http://mohamad-rafli-flihidmarket.pbp.cs.ui.ac.id/ 
 
+<details>
+  <summary><b>Tugas 2</b></summary>
+
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**   
 1) Membuat Repository Lokal, Repository GitHub, dan Proyek Django Baru.  
    Pertama-tama, untuk memulai proyek Django, saya membuat sebuah repository lokal di komputer. Kemudian, hubungkan repository lokal dengan repository GitHub menggunakan perintah 'git remote add origin https://github.com/flihid/flihid.market.git'. Setelah inisialisasi github selesai, tambahkan '.gitignore' dan 'requirements.txt' pada repositori lokal. Setelah itu, saya inisiasi virtual environment dan menginstall semua dependency yang diperlukan untuk proyek Django baru saya.  
@@ -41,6 +44,11 @@ Menurut saya, Django adalah framework yang populer karena menggunakan model MVT 
 5. **Mengapa model pada Django disebut sebagai ORM?**
 
 Model pada Django disebut sebagai ORM (*Object-Relational Mapping*) karena berfungsi sebagai penghubung antara kode Python dan *database* relasional. Dengan ORM, pengembang dapat mengelola data dalam *database* menggunakan objek Python tanpa perlu menulis *query* SQL secara langsung. Ini membuat proses pengelolaan data lebih intuitif dan efisien, karena pengembang dapat bekerja dengan data dalam bentuk objek yang lebih mudah dipahami dan dimanipulasi.
+
+</details>
+
+<details>
+  <summary><b>Tugas 3</b></summary>
 
 6. **Jelaskan mengapa kita memerlukan *data delivery* dalam pengimplementasian sebuah platform?**
 
@@ -87,3 +95,42 @@ Penyerang dapat memanfaatkan celah ini dengan mengirimkan tautan atau skrip berb
 
 4. Format  JSON *by ID*
 ![jsonbyid](https://github.com/user-attachments/assets/49d3f9fd-a451-407b-87f7-4dcd006ace00)
+
+</details>
+
+<details>
+  <summary><b>Tugas 4</b></summary>
+
+11. **Apa perbedaan antara ‘HttpResponseRedirect()’ dan ‘redirect()’**
+
+‘HttpResponseRedirect()’ adalah kelas yang secara langsung mengembalikan respons HTTP untuk mengarahkan pengguna ke URL tertentu secara manual, dan biasanya membutuhkan URL sebagai argumen. ‘redirect()’, adalah *shortcut* fungsi yang lebih fleksibel dan lebih mudah digunakan. Fungsi ini dapat menerima berbagai jenis argumen, seperti URL, nama view, atau objek model, dan secara otomatis menangani konversi argumen tersebut menjadi URL yang valid. 
+
+12. **Jelaskan cara kerja penghubungan model Product dengan User\!**
+
+Penghubungan model Product dengan User dalam Django dilakukan melalui ForeignKey, yang memungkinkan setiap entri produk terhubung dengan satu pengguna tertentu. Dalam model Product, kita mendefinisikan atribut user sebagai ForeignKey yang merujuk ke model User. Dengan demikian, setiap kali kita membuat entri produk baru, kita bisa mengaitkannya dengan pengguna yang membuat entri tersebut. Saat kita ingin mengakses informasi pengguna dari entri produk, kita dapat dengan mudah melakukannya melalui relasi ini. Ini memungkinkan pengelolaan data yang lebih terstruktur dan memudahkan dalam melakukan query berdasarkan pengguna yang bersangkutan. Contohnya, jika saya memiliki model Product dan User, di model Product saya akan menambahkan field seperti ‘user \= models.ForeignKey(User, on\_delete=models.CASCADE)’. Ini memastikan bahwa setiap entri produk terkait dengan satu pengguna dan jika pengguna dihapus, entri produk mereka juga akan dihapus.
+
+13. **Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
+
+Authentication dan authorization adalah dua konsep berbeda dalam keamanan sistem. Authentication adalah proses memverifikasi identitas pengguna, seperti saat pengguna memasukkan nama pengguna dan kata sandi saat login. Authorization adalah proses menentukan hak akses atau izin yang dimiliki pengguna setelah identitas mereka dikonfirmasi. Saat pengguna login, sistem melakukan authentication untuk memastikan bahwa pengguna adalah siapa yang mereka klaim. Setelah itu, authorization digunakan untuk menentukan apa yang boleh atau tidak boleh dilakukan oleh pengguna dalam sistem, berdasarkan peran atau izin yang diberikan.
+
+Di Django, authentication dilakukan melalui sistem login yang memeriksa kredensial pengguna terhadap data yang tersimpan di basis data. Django menyediakan model ‘User’ dan form login untuk memudahkan proses ini. Authorization di Django dikelola dengan menggunakan sistem permission dan grup, serta decorator seperti ‘@login\_required’ dan ‘@permission\_required’ untuk mengontrol akses ke tampilan atau fitur tertentu berdasarkan hak akses pengguna.
+
+14. **Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?**
+
+Django mengingat pengguna yang telah login dengan menggunakan sistem *session*. Ketika pengguna berhasil login, Django membuat sebuah *session* untuk mereka, yang disimpan di sisi server dan diidentifikasi dengan ID *session* yang disimpan dalam cookies di browser pengguna. Setiap kali pengguna melakukan permintaan, cookies ini dikirim ke server, memungkinkan Django untuk mengidentifikasi pengguna dan mengautentikasi mereka tanpa perlu login ulang.
+
+Cookies juga memiliki kegunaan lain, seperti menyimpan preferensi pengguna, menjaga pesanan produk dalam aplikasi e-commerce, dan melacak aktivitas pengguna untuk analisis dan personalisasi konten. Namun, tidak semua cookies aman digunakan. Beberapa cookies dapat menjadi target serangan, seperti cookies *session* yang tidak dienkripsi, yang bisa disalahgunakan oleh pihak ketiga. 
+
+15. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**  
+1) Mengimplementasikan fungsi registrasi, login, dan logout
+   Saya mulai dengan membuat fungsi registrasi, login, dan logout untuk memfasilitasi akses pengguna. Proses registrasi mencakup validasi data yang dimasukkan pengguna, dan jika berhasil, data pengguna disimpan dalam database. Untuk login, saya menerapkan autentikasi yang memastikan pengguna yang memasukkan kredensial yang benar dapat mengakses aplikasi. Fungsi logout, di mana *session* pengguna diakhiri, dan mereka diarahkan kembali ke halaman login.
+2) Membuat akun pengguna dan dummy data 
+   Setelah autentikasi, saya membuat dua akun pengguna dengan menggunakan model yang telah dibuat sebelumnya. Saya mengisi masing-masing akun dengan tiga dummy data untuk keperluan pengujian dan demonstrasi. 
+3) Menghubungkan model Product dengan User
+   Selanjutnya, saya menghubungkan model Product dengan User. Ini memungkinkan saya untuk mengaitkan produk yang dibuat atau dimiliki dengan pengguna tertentu. Penghubungan ini dilakukan dengan menambahkan ForeignKey di model Product yang merujuk ke model User, sehingga setiap produk dapat diidentifikasi berdasarkan pemiliknya.
+4) Menampilkan detail informasi pengguna
+   Setelah pengguna berhasil login, saya menampilkan detail informasi pengguna, seperti username, pada halaman utama aplikasi. Selain itu, saya menerapkan cookies untuk menyimpan informasi tentang waktu login terakhir pengguna. Dengan cara ini, pengguna dapat melihat informasi penting saat menggunakan aplikasi.
+5) Selanjutnya saya mendokumentasi dalam file ‘README.md’ untuk menjawab beberapa pertanyaan tentang perbedaan antara HttpResponseRedirect() dan redirect(), cara kerja penghubungan model Product dengan User, perbedaan antara authentication dan authorization, dan cara Django mengingat pengguna yang telah login.  
+6) Terakhir saya melakukan ‘add’, ‘commit’, dan ‘push’ ke GitHub untuk mengunggah kode dan dokumentasi proyek ke repositori.
+
+</details>
