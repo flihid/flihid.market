@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="max-w-3xl bg-white rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 flex" onclick="toggleDetails()">
+
+    <!-- Data di kanan -->
+    <div class="bg-white-700 p-6 w-full max-w-sm mx-auto cursor-pointer transition-all duration-300" id="userCard" >
+        <div class="flex justify-between text-gray-200">
+            <p class="text-xl font-bold text-gray-900 mb-2">Nama:</p>
+            <p class="text-xl font-bold text-gray-900 mb-2 hidden" id="userName">{{ value_name }}</p>
+        </div>
+        <div class="flex justify-between text-gray-200 mt-2">
+            <p class="text-xl font-bold text-gray-900 mb-2">Kelas:</p>
+            <p class="text-xl font-bold text-gray-900 mb-2 hidden" id="userClass">{{ value_class }}</p>
+        </div>
+        <div class="mt-4 text-gray-200">
+            <p class="text-xs font-bold text-gray-600 mt-4" id="userNameDetail">Klik untuk melihat profile</p>
+        </div>
+    </div>
+</div>
+
+<script>
+  function toggleDetails() {
+    const userName = document.getElementById('userName');
+    const userClass = document.getElementById('userClass');
+    
+    // Toggle name dan class
+    userName.classList.toggle('hidden');
+    userClass.classList.toggle('hidden');
+  }
+</script>
+

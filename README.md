@@ -1,4 +1,4 @@
-**Flihid\_Market**
+# Flihid\_Market
 
 Nama : Mohamad Rafli Hidayat  
 NPM : 2306245831  
@@ -8,7 +8,7 @@ Link Web : http://mohamad-rafli-flihidmarket.pbp.cs.ui.ac.id/
 <details>
   <summary><b>Tugas 2</b></summary>
 
-1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**   
+1. **Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial).**   
 1) Membuat Repository Lokal, Repository GitHub, dan Proyek Django Baru.  
    Pertama-tama, untuk memulai proyek Django, saya membuat sebuah repository lokal di komputer. Kemudian, hubungkan repository lokal dengan repository GitHub menggunakan perintah 'git remote add origin https://github.com/flihid/flihid.market.git'. Setelah inisialisasi github selesai, tambahkan '.gitignore' dan 'requirements.txt' pada repositori lokal. Setelah itu, saya inisiasi virtual environment dan menginstall semua dependency yang diperlukan untuk proyek Django baru saya.  
 2) Membuat Aplikasi dengan Nama "main".  
@@ -70,7 +70,7 @@ Jika kita tidak menambahkan ‘csrf\_token’ pada form, aplikasi Django menjadi
 
 Penyerang dapat memanfaatkan celah ini dengan mengirimkan tautan atau skrip berbahaya kepada pengguna yang sudah login. Ketika pengguna tersebut tanpa sengaja mengakses tautan tersebut, permintaan berbahaya dapat dikirim ke server dengan kredensial mereka, karena server menganggap permintaan itu sah.
 
-10. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial).**  
+10. **Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial).**  
 1) Membuat Input Form untuk Menambahkan Objek Model  
    Saya menggunakan form Django untuk membuat form input ini. Form akan mengambil data dari user, memvalidasi data tersebut, dan kemudian menyimpannya ke dalam *database* jika valid. Dengan form ini, saya dapat menerima masukan dari pengguna untuk objek model yang ingin mereka tambahkan.  
 2) Menambahkan Fungsi Views untuk Menyajikan Objek dalam Format XML dan JSON.  
@@ -109,7 +109,7 @@ Penyerang dapat memanfaatkan celah ini dengan mengirimkan tautan atau skrip berb
 
 Penghubungan model Product dengan User dalam Django dilakukan melalui ForeignKey, yang memungkinkan setiap entri produk terhubung dengan satu pengguna tertentu. Dalam model Product, kita mendefinisikan atribut user sebagai ForeignKey yang merujuk ke model User. Dengan demikian, setiap kali kita membuat entri produk baru, kita bisa mengaitkannya dengan pengguna yang membuat entri tersebut. Saat kita ingin mengakses informasi pengguna dari entri produk, kita dapat dengan mudah melakukannya melalui relasi ini. Ini memungkinkan pengelolaan data yang lebih terstruktur dan memudahkan dalam melakukan query berdasarkan pengguna yang bersangkutan. Contohnya, jika saya memiliki model Product dan User, di model Product saya akan menambahkan field seperti ‘user \= models.ForeignKey(User, on\_delete=models.CASCADE)’. Ini memastikan bahwa setiap entri produk terkait dengan satu pengguna dan jika pengguna dihapus, entri produk mereka juga akan dihapus.
 
-13. **Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
+13. **Apa perbedaan antara *authentication* dan *authorization*, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
 
 Authentication dan authorization adalah dua konsep berbeda dalam keamanan sistem. Authentication adalah proses memverifikasi identitas pengguna, seperti saat pengguna memasukkan nama pengguna dan kata sandi saat login. Authorization adalah proses menentukan hak akses atau izin yang dimiliki pengguna setelah identitas mereka dikonfirmasi. Saat pengguna login, sistem melakukan authentication untuk memastikan bahwa pengguna adalah siapa yang mereka klaim. Setelah itu, authorization digunakan untuk menentukan apa yang boleh atau tidak boleh dilakukan oleh pengguna dalam sistem, berdasarkan peran atau izin yang diberikan.
 
@@ -121,7 +121,7 @@ Django mengingat pengguna yang telah login dengan menggunakan sistem *session*. 
 
 Cookies juga memiliki kegunaan lain, seperti menyimpan preferensi pengguna, menjaga pesanan produk dalam aplikasi e-commerce, dan melacak aktivitas pengguna untuk analisis dan personalisasi konten. Namun, tidak semua cookies aman digunakan. Beberapa cookies dapat menjadi target serangan, seperti cookies *session* yang tidak dienkripsi, yang bisa disalahgunakan oleh pihak ketiga. 
 
-15. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**  
+15. **Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial).**  
 1) Mengimplementasikan fungsi registrasi, login, dan logout
    Saya mulai dengan membuat fungsi registrasi, login, dan logout untuk memfasilitasi akses pengguna. Proses registrasi mencakup validasi data yang dimasukkan pengguna, dan jika berhasil, data pengguna disimpan dalam database. Untuk login, saya menerapkan autentikasi yang memastikan pengguna yang memasukkan kredensial yang benar dapat mengakses aplikasi. Fungsi logout, di mana *session* pengguna diakhiri, dan mereka diarahkan kembali ke halaman login.
 2) Membuat akun pengguna dan dummy data 
@@ -132,5 +132,68 @@ Cookies juga memiliki kegunaan lain, seperti menyimpan preferensi pengguna, menj
    Setelah pengguna berhasil login, saya menampilkan detail informasi pengguna, seperti username, pada halaman utama aplikasi. Selain itu, saya menerapkan cookies untuk menyimpan informasi tentang waktu login terakhir pengguna. Dengan cara ini, pengguna dapat melihat informasi penting saat menggunakan aplikasi.
 5) Selanjutnya saya mendokumentasi dalam file ‘README.md’ untuk menjawab beberapa pertanyaan tentang perbedaan antara HttpResponseRedirect() dan redirect(), cara kerja penghubungan model Product dengan User, perbedaan antara authentication dan authorization, dan cara Django mengingat pengguna yang telah login.  
 6) Terakhir saya melakukan ‘add’, ‘commit’, dan ‘push’ ke GitHub untuk mengunggah kode dan dokumentasi proyek ke repositori.
+
+</details>
+
+<details>
+  <summary><b>Tugas 5</b></summary>
+  
+16. **Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut\!**
+
+Jika terdapat beberapa CSS selector yang diterapkan pada suatu elemen HTML, browser akan menentukan urutan prioritas berdasarkan *specificity*, urutan penulisan, dan pentingnya deklarasi. *Specificity* mengacu pada seberapa spesifik suatu selector dalam menargetkan elemen, mulai dari yang paling spesifik hingga yang paling umum. Selector dengan ID memiliki kekhususan tertinggi, diikuti oleh selector kelas, atribut, dan pseudokelas. Selector elemen HTML memiliki kekhususan yang lebih rendah. Jika dua selector memiliki tingkat *specificity* yang sama, CSS yang muncul terakhir dalam urutan kode akan diambil. Selain itu, deklarasi dengan kata kunci ‘\!important’ akan memiliki prioritas tertinggi, meskipun *specificity*\-nya lebih rendah.
+
+17. **Mengapa *responsive design* menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design\!**
+
+Responsive design adalah pendekatan dalam pengembangan web yang memungkinkan tampilan situs menyesuaikan dengan berbagai ukuran layar dan perangkat, seperti desktop, tablet, dan smartphone. Hal ini penting karena meningkatkan aksesibilitas dan kenyamanan pengguna, memungkinkan navigasi yang mudah tanpa perlu zoom in atau scroll horizontal. Responsive design juga mempercepat loading halaman dengan menyesuaikan elemen, seperti gambar, sesuai ukuran perangkat. Responsive design bukan hanya soal estetika, tetapi juga fungsionalitas dan kinerja, serta menjadi investasi penting dalam pengembangan web modern untuk memastikan pengalaman terbaik bagi semua pengguna.
+
+Selain itu, responsive design berdampak positif pada SEO, karena mesin pencari seperti Google memberi peringkat lebih tinggi pada situs yang mobile-friendly. Contohnya, situs berita seperti “BBC News” dan “The New York Times” menerapkan responsive design untuk pengalaman pengguna yang optimal di berbagai perangkat. Sebaliknya, situs web yang belum responsif, seperti beberapa situs pemerintah atau institusi pendidikan, sering kali tidak optimal di perangkat mobile.
+
+18. **Jelaskan perbedaan antara *margin*, *border*, dan *padding*, serta cara untuk mengimplementasikan ketiga hal tersebut\!**
+
+Margin, border, dan padding adalah tiga konsep dasar dalam CSS yang digunakan untuk mengatur ruang dan tata letak elemen di halaman web. Margin adalah ruang di luar batas elemen, yang memisahkan elemen tersebut dari elemen lain di sekitarnya. Border adalah garis yang mengelilingi elemen, memberikan batas visual yang menandakan batas elemen tersebut. Sementara itu, padding adalah ruang di dalam elemen, antara konten elemen dan batasnya, yang memberikan jarak antara isi dan border.
+
+Untuk mengimplementasikannya, CSS menyediakan properti margin, border, dan padding yang bisa ditentukan secara spesifik atau seragam untuk seluruh sisi elemen. Misalnya, untuk mengatur margin, kita bisa menggunakan properti margin dengan nilai yang sesuai, seperti ‘margin: 20px;’ yang memberikan jarak 20 piksel di semua sisi. Untuk border, kita menggunakan properti border, misalnya ‘border: 2px solid green;’, yang akan memberikan garis hijau dengan ketebalan 2 piksel di sekitar elemen. Terakhir, untuk padding, kita bisa menggunakan properti padding, seperti ‘padding: 50px;’, yang akan menambahkan jarak 50 piksel antara konten dan border elemen.
+
+19. **Jelaskan konsep *flexbox* dan *grid layout* beserta kegunaannya\!**
+
+Flexbox dan Grid Layout adalah dua sistem layout yang digunakan dalam CSS untuk mengatur elemen-elemen dalam halaman web. Flexbox (Flexible Box Layout) dirancang untuk mengatur elemen dalam satu dimensi, baik secara horizontal maupun vertikal. Konsep utama dari Flexbox adalah untuk membuat elemen yang fleksibel dan responsif, memungkinkan untuk menyesuaikan ukuran dan posisi berdasarkan ruang yang tersedia. Kegunaan Flexbox sangat bermanfaat ketika kita ingin menyusun elemen dalam baris atau kolom, seperti menu navigasi, tombol, atau galeri gambar.
+
+Sementara itu, Grid Layout adalah sistem layout dua dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom secara bersamaan. Grid memberikan kontrol yang lebih luas atas penempatan dan ukuran elemen, memungkinkan untuk membuat desain yang kompleks dengan lebih mudah. Kegunaan Grid sangat cocok untuk tata letak yang lebih terstruktur, seperti halaman web yang memiliki banyak bagian berbeda, seperti artikel, sidebar, atau footer.
+
+20. **Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial)\!**  
+1) Mengimplementasi fungsi untuk menghapus dan mengedit ‘product’
+
+Saya menggunakan ‘CRUD (Create, Read, Update, Delete)’ untuk produk. Fungsi penghapusan memerlukan identifikasi produk berdasarkan ID di database, kemudian melakukan penghapusan. Untuk mengedit, saya mengambil data produk dari database berdasarkan ID, lalu memperbarui data di form dan menyimpannya kembali setelah diubah.
+
+2) Kustomisasi desain dengan CSS framework
+
+Saya menggunakan Tailwind CSS untuk memberikan *style* pada halaman agar lebih menarik. Framework CSS ini mempercepat proses styling dan memastikan responsivitas pada berbagai perangkat. Saya menambahkan beberapa kustomisasi CSS khusus untuk elemen yang tidak didukung penuh oleh framework.
+
+3) Kustomisasi halaman ‘login’, ‘register’, dan ‘tambah product’
+
+Saya menggunakan komponen CSS seperti form styling yang modern, tombol yang interaktif (*hover effects*), serta penggunaan ‘grid layout’ dan ‘flexbox’ untuk memastikan tampilan tetap responsif.
+
+4) Kustomisasi halaman daftar product 
+
+Halaman daftar produk dikustomisasi menggunakan *card layout* yang responsif, menampilkan produk dalam grid yang rapi. Dengan memanfaatkan framework CSS, saya bisa menambahkan *shadow*, *border*, dan *hover effects* untuk lebih menarik. Saya memastikan bahwa elemen *card* terlihat baik di perangkat kecil maupun besar.
+
+5) Tampilan ketika tidak ada produk
+
+Saya menambahkan kondisi ‘if-else’ dalam *template* yang memeriksa apakah ada produk di database. Jika tidak ada, saya menampilkan pesan dan gambar ‘placeholder’ menggunakan CSS kustomisasi untuk menunjukkan bahwa produk belum tersedia.
+
+6) Tampilan ketika tidak ada produk
+
+Saat produk tersedia, masing-masing produk ditampilkan dengan *card layout* yang berisi nama, harga, dan deskripsi produk. Desain *card* tersebut dibuat berbeda dari desain di tutorial, menggunakan gaya visual yang lebih menarik.
+
+7) Tombol edit dan hapus pada setiap card produk
+
+Setiap card produk memiliki dua tombol: “Edit” dan “Hapus”. Tombol-tombol ini ditambahkan menggunakan elemen HTML ‘\<button\>’ yang di-styling dengan Tailwind. Saat tombol “Edit” diklik, pengguna diarahkan ke halaman edit produk, dan tombol “Hapus” menghapus produk tersebut dari database.
+
+8) *Navbar* yang responsif
+
+Untuk membuat *navbar* yang responsif, Saya menggunakan Tailwind, yang menyediakan *class* untuk membuat *navbar* yang bisa berubah sesuai ukuran layar. Misalnya, *navbar* pada *mobile device* bisa menggunakan menu ‘hamburger’, sedangkan pada *desktop*, semua opsi ditampilkan secara horizontal.
+
+9) Selanjutnya saya mendokumentasi dalam file ‘README.md’ untuk menjawab beberapa pertanyaan tentang urutan prioritas pengambilan CSS selector, responsif design menjadi konsep yang penting dalam pengembangan aplikasi web dan contoh aplikasi yang sudah dan belum menerapkan responsif design, perbedaan antara *margin*, *border*, dan *padding*, serta cara untuk mengimplementasikan ketiga hal tersebut,  konsep *flexbox* dan *grid layout* beserta kegunaannya.  
+10) Terakhir saya melakukan ‘add’, ‘commit’, dan ‘push’ ke GitHub untuk mengunggah kode dan dokumentasi proyek ke repositori.
 
 </details>
