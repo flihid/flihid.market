@@ -197,3 +197,76 @@ Untuk membuat *navbar* yang responsif, Saya menggunakan Tailwind, yang menyediak
 10) Terakhir saya melakukan ‘add’, ‘commit’, dan ‘push’ ke GitHub untuk mengunggah kode dan dokumentasi proyek ke repositori.
 
 </details>
+
+<details>
+  <summary><b>Tugas 5</b></summary>
+
+21. **Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web\!**
+
+JavaScript sangat bermanfaat dalam pengembangan aplikasi web karena memungkinkan interaktivitas dan responsivitas yang lebih baik di sisi pengguna. Dengan JavaScript, form validasi bisa dilakukan langsung di sisi pengguna, atau animasi dapat diterapkan untuk membuat *interface* pengguna lebih menarik, dan adanya manipulasi DOM. Penggunaan JavaScript juga mendukung teknologi AJAX, yang memungkinkan pengambilan data secara asinkron dari server, sehingga konten dapat diperbarui secara real-time tanpa mengganggu pengalaman pengguna. JavaScript juga mendukung pengembangan aplikasi web modern dengan framework seperti React atau Vue, yang membuat *interface* lebih dinamis dan menarik. Penggunaannya bersama Django memungkinkan pengembangan aplikasi full-stack yang lebih kuat dan interaktif, di mana Django menangani server-side dan JavaScript meningkatkan pengalaman di sisi klien.
+
+22. **Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()\! Apa yang akan terjadi jika kita tidak menggunakan await?**
+
+Saat menggunakan \`await\` dengan \`fetch()\`, tujuannya adalah untuk memastikan JavaScript menunggu hingga permintaan HTTP selesai sebelum melanjutkan kode berikutnya. Karena \`fetch()\` mengembalikan sebuah “Promise” dan bekerja secara asinkron, \`await\` memberi tahu JavaScript untuk menunggu hingga data respons dari server diterima, sehingga kita bisa bekerja langsung dengan data tersebut.
+
+Jika kita tidak menggunakan \`await\`, JavaScript tidak akan menunggu hasil dari ‘fetch()’ dan kode akan terus berjalan, dan hasilnya hanya akan berupa “Promise”, bukan data yang diinginkan. Ini dapat menghasilkan kesalahan karena respons belum tersedia. Dalam konteks Django, ‘await’ penting untuk memastikan data dari *backend* telah diterima sepenuhnya sebelum digunakan di *front-end*.
+
+23. **Mengapa kita perlu menggunakan decorator csrf\_exempt pada view yang akan digunakan untuk AJAX POST?**
+
+Setiap permintaan POST yang dikirimkan ke server harus melewati proses pemeriksaan Cross-Site Request Forgery (CSRF) untuk alasan keamanan. Django secara otomatis melindungi aplikasi dari serangan CSRF dengan cara memeriksa token CSRF yang dikirim bersama permintaan POST. Namun, ketika kita menggunakan AJAX untuk mengirim permintaan POST, terkadang token CSRF tidak secara otomatis disertakan dalam permintaan tersebut. Karena itu, jika kita tidak mengatur pengiriman token CSRF dalam permintaan AJAX, Django akan memblokir permintaan tersebut karena dianggap tidak aman.
+
+Untuk mengatasi masalah ini, kita bisa menggunakan decorator ‘csrf\_exempt’, yang menonaktifkan pemeriksaan CSRF pada view tertentu. Meskipun hal ini memungkinkan permintaan AJAX diproses tanpa token, penggunaan ‘csrf\_exempt’ harus berhati-hati karena dapat membuka celah keamanan. Alternatif yang lebih aman adalah menyertakan token CSRF secara manual dalam permintaan AJAX.
+
+24. **Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?**
+
+Pembersihan data input pengguna tidak hanya dilakukan di *frontend*, tapi juga di *backend*, untuk memastikan keamanan dan integritas data. Meskipun *frontend* bisa digunakan untuk validasi awal, misalnya memastikan format email atau panjang kata sandi sesuai, validasi di *frontend* mudah dilewati oleh pengguna yang memahami cara memanipulasi kode JavaScript di browser. Selain itu, ada juga kemungkinan input datang langsung ke *backend*, misalnya melalui API, tanpa melewati *frontend*.
+
+Di *backend*, pembersihan dan validasi lebih aman karena dijalankan di server, yang tidak bisa diakses atau dimanipulasi oleh pengguna. Ini memastikan data yang masuk benar-benar sesuai dengan aturan yang telah ditetapkan, mencegah terjadinya serangan seperti SQL injection, XSS, atau manipulasi data lainnya yang bisa membahayakan sistem. Oleh karena itu, meskipun validasi di *frontend* penting untuk memberikan *feedback* langsung kepada pengguna, pembersihan data di *backend* adalah langkah yang sangat penting untuk menjaga keamanan aplikasi secara keseluruhan.
+
+25. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)\!**
+
+AJAX GET
+
+1) Mengubah kode cards data product agar mendukung AJAX GET
+
+Pada template ‘main.html’, saya membuat fungsi JavaScript ‘refreshProductEntries()’ yang digunakan untuk mengambil data produk secara asinkronus dari server. Fungsi ini melakukan fetch ke endpoint ‘{% url 'main:show\_json' %}’ yang mengembalikan data dalam format JSON. Data yang diterima kemudian diproses dan ditampilkan pada halaman tanpa perlu me-reload seluruh halaman.
+
+2) Pengambilan data product menggunakan AJAX GET dengan data milik pengguna yang logged-in
+
+Pada sisi server, view ‘show\_json’ di ‘views.py’ mengembalikan data produk yang hanya dimiliki oleh pengguna yang sedang login dengan menggunakan query ‘Product.objects.filter(user=request.user)’. Ini memastikan bahwa data yang diambil melalui AJAX GET adalah data milik pengguna yang terautentikasi.
+
+3) Keamanan pada AJAX GET
+
+Data yang diambil melalui AJAX GET difilter berdasarkan pengguna yang sedang login ‘(request.user)’, sehingga hanya data milik pengguna tersebut yang dikirimkan ke frontend.
+
+AJAX POST
+
+4) Membuat tombol yang membuka modal dengan form untuk menambahkan product
+
+Di dalam ‘main.html’, terdapat tombol dengan atribut ```data-modal-toggle="crudModal"``` yang ketika diklik akan memanggil fungsi ‘showModal()’ untuk menampilkan modal berisi form penambahan produk. Fungsi JavaScript ‘addProductEntry()’ menangani submit form secara asinkronus menggunakan fetch API. Setelah data berhasil ditambahkan, modal ditutup menggunakan ‘hideModal()’, dan form di-reset dengan ```document.getElementById("productEntryForm").reset()```. Jika terjadi kegagalan, terdapat penanganan error untuk menampilkan pesan kepada pengguna.
+
+5) Membuat fungsi view baru untuk menambahkan product ke dalam basis data
+
+Di ‘views.py’, fungsi ‘add\_product\_entry\_ajax’ ditambahkan untuk menangani permintaan POST dari form modal. Fungsi ini membuat objek Product baru dan menyimpannya ke database.
+
+6) Membuat path ‘/create-product\_entry\_ajax/’ yang mengarah ke fungsi view baru
+
+Di ‘urls.py’, path baru ditambahkan untuk mengarahkan ke view ‘add\_product\_entry\_ajax’.  
+```path('create-product\_entry\_ajax', add\_product\_entry\_ajax, name='add\_product\_entry\_ajax'),```
+
+7) Menghubungkan form dalam modal ke path ‘/create-product\_entry\_ajax/’
+
+Pada form modal di main.html, saat submit, fungsi ‘addProductEntry()’ dipanggil yang akan melakukan fetch ke URL yang telah ditentukan.
+
+8) Refresh halaman utama secara asinkronus untuk menampilkan daftar product terbaru tanpa reload halaman
+
+Setelah data berhasil ditambahkan, fungsi ‘refreshProductEntries()’ dipanggil untuk memperbarui daftar produk pada halaman secara asinkronus.
+
+9) Keamanan pada AJAX POST
+
+Meskipun ‘@csrf\_exempt’ digunakan pada view ‘add\_product\_entry\_ajax’, sebaiknya saya tetap mengimplementasikan token CSRF untuk mencegah serangan CSRF. Selain itu, input dari pengguna dibersihkan menggunakan ‘strip\_tags’ untuk mencegah serangan XSS. Di sisi frontend, saya pastikan untuk mengirim token CSRF dalam header permintaan fetch.
+
+10) Selanjutnya saya mendokumentasi dalam file ‘README.md’ untuk menjawab beberapa pertanyaan tentang manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web, fungsi dari penggunaan ‘await’ ketika kita menggunakan ‘fetch()’ dan apa yang akan terjadi jika kita tidak menggunakan ‘await’, mengapa kita perlu menggunakan decorator ‘csrf\_exempt’ pada view yang akan digunakan untuk AJAX POST, mengapa pembersihan data input pengguna dilakukan di belakang (backend) juga dan tidak dilakukan di frontend saja.  
+11) Terakhir saya melakukan ‘add’, ‘commit’, dan ‘push’ ke GitHub untuk mengunggah kode dan dokumentasi proyek ke repositori.  
+
+</details>
