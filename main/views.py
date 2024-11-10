@@ -115,7 +115,7 @@ def delete_product(request, id):
 def add_product_entry_ajax(request):
     user = request.user
     name = strip_tags(request.POST.get("name"))
-    price = strip_tags(request.POST.get("price"))  
+    price = request.POST.get("price")  
     description = strip_tags(request.POST.get("description"))
 
     new_product = Product(
